@@ -1,0 +1,15 @@
+Package: tfreport
+Type: Package
+Title: Makes a report based on Trachoma data.
+Version: 0.1.0
+Author: Phong Le
+Maintainer: Phong Le <pahongle@gmail.com>
+Depends: R (>= 3.0.0)
+Imports:
+    tidyverse,
+    magrittr
+Description: Makes a report based on Trachoma data. This is an example package for the INFO550 class.
+License: NA
+Encoding: UTF-8
+LazyData: TRUE
+RoxygenNote: 7.1.1
