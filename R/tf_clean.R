@@ -4,18 +4,23 @@
 #' @title tf_clean
 #' @param data A dataframe to be cleaned
 #' @return The cleaned data
-#' @import tidyverse
-#' @importFrom (magrittr,"%>%")
+#' @importFrom dplyr rename filter group_by summarise rename
 #' @export
 
 tf_clean <- function(data){
 
-  EU_summary <- data %>%
-  rename(TT = TT_15plus) %>%
-  filter(survey_year <= 2020) %>%
-  group_by(survey_year) %>%
-  summarise(TF = round(mean(TF),2), TI = round(mean(TI),2), TT = round(mean(TT),2)) %>%
-  rename(Survey_Year = survey_year)
+  renamed <- dplyr::rename(data, TT = TT_15plus)
+  filtered <- dplyr::filter(renamed, survey_year <= 2020)
+  grouped <- dplyr::group_by(filtered, survey_year)
+  summarised <- dplyr::summarise(grouped, TF = round(mean(TF),2), TI = round(mean(TI),2), TT = round(mean(TT),2))
+  final <- dplyr::rename(summarised, Survey_Year = survey_year)
 
-  return(EU_summary)
+
+  # filter(survey_year <= 2020) %>%
+  # group_by(survey_year) %>%
+  # summarise(TF = round(mean(TF),2), TI = round(mean(TI),2), TT = round(mean(TT),2)) %>%
+  # rename(Survey_Year = survey_year)
+
+  return(final)
   }
+

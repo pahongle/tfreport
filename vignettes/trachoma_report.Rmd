@@ -8,7 +8,6 @@ vignette: >
 ---
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
-library(tidyverse)
 library(tfreport)
 
 EU_summary <- tf_clean(trachoma_data)
@@ -24,7 +23,7 @@ ___
 
 Below you will find summarizing figures for the prevalence of Trachoma stages TF, TI, and TT over the course of 2007 - 2020. 
 
-```{r echo = FALSE, message=FALSE, warning=FALSE}
+```{r echo = FALSE, message=FALSE, warning=FALSE, fig.width=6, fig.height=4}
 
 tf_fig(EU_summary)
 
